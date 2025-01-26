@@ -1,6 +1,15 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const redirectToLogin = () => {
+    navigate("/login"); // Replace "/login" with your login route
+  };
+
+
+
+
   return (
     <div>
       <nav className="bg-white dark:bg-gray-800 antialiased">
@@ -11,8 +20,8 @@ const NavBar = () => {
               <div className="shrink-0">
                 <a href="#" title="">
                   <img
-                    className="block w-auto h-8 dark:hidden"
-                    src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg"
+                    className="block w-auto h-14"
+                    src="https://i.ibb.co.com/KqBDrH7/bike-house.png"
                     alt="Logo"
                   />
                   
@@ -88,6 +97,7 @@ const NavBar = () => {
                 id="userDropdownButton1"
                 data-dropdown-toggle="userDropdown1"
                 type="button"
+                onClick={redirectToLogin}
                 className="inline-flex items-center pbutton rounded-lg justify-center p-2 hover:bg-gray-100  text-sm font-medium leading-none text-white "
               >
                 {/* <svg
@@ -105,7 +115,7 @@ const NavBar = () => {
                     d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
                   />
                 </svg> */}
-                Account
+                Log In
               </button>
             </div>
           </div>
