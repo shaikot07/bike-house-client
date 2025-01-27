@@ -46,7 +46,7 @@ const Login = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error("Error during login:", err);
-      toast.error(err.message || "Something went wrong", { id: toastId, duration: 2000 });
+      toast.error(err.data.message  || "Something went wrong", { id: toastId, duration: 2000 });
     }
   };
 
@@ -58,7 +58,7 @@ const Login = () => {
             <h2 className="mt-6 font-display text-center text-3xl font-bold text-gray-900">
               LOGIN
             </h2>
-            <p className="text-center">
+            <p className="text-center text-sm">
               If you have an account with us, please log in.
             </p>
           </div>
@@ -120,16 +120,16 @@ const Login = () => {
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#F2355F] hover:bg-[#f2355ef1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Sign in
+               Login
               </button>
             </div>
           </form>
           <div className="sm:mx-auto sm:w-full sm:max-w-md mt-2">
-            <p className="text-center">
+            <p className="text-center text-sm">
               Don’t have an account?{" "}
               <span>
                 <a
-                  href="/signup"
+                  href="/registration"
                   className="font-medium text-[#F2355F] hover:text-blue-500"
                 >
                   create an account
