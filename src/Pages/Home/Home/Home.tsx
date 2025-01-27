@@ -1,9 +1,13 @@
 import React from 'react';
+import Banner from '../Banner/Banner';
+import SecondSectionCart from '../secondSectionCart/SecondSectionCart';
 
 const Home = () => {
     return (
         <div>
-            <h2>this is home </h2>
+           
+           <Banner></Banner>
+           <SecondSectionCart/>
         </div>
     );
 };
