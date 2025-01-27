@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
@@ -16,4 +17,8 @@ body {
 
 .pbutton{
   background: #1A1D21;
+}
+
+.my-color{
+background: #F2355F;
 }
