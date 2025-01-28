@@ -47,7 +47,7 @@ const NavBar2 = () => {
           <li>
             <Link
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
-              to={"/addedtask"}
+              to={"/product"}
             >
               All Product
             </Link>

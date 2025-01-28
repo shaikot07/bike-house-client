@@ -7,14 +7,27 @@ import { baseApi } from "../../api/baseApi";
 const productManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query({
+      // query: (args) => {
+      //   const params = new URLSearchParams();
+
+      //   if (args) {
+      //     args.forEach((item: TQueryParam) => {
+      //       params.append(item.name, item.value as string);
+      //     });
+      //   }
+
       query: (args) => {
         const params = new URLSearchParams();
 
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            params.append(item.name, item.value as string);
+        // Expecting args to be an object and iterating over its entries
+        if (args && typeof args === "object") {
+          Object.entries(args).forEach(([key, value]) => {
+            if (value !== undefined && value !== null) {
+              params.append(key, value.toString());
+            }
           });
         }
+
 
         return {
           url: '/products',
