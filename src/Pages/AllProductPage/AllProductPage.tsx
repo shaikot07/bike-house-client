@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGetAllProductsQuery } from "../../redux/features/allProduct/productManagement.api";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const AllProductPage = () => {
   //   const [searchTerm, setSearchTerm] = useState(undefined);
@@ -22,7 +23,7 @@ const AllProductPage = () => {
   const handleFilterInStock = (value) => setFilterInStock(value);
   const handleSortChange = (value) => setSortOption(value);
   const handleSearchClick = () => {
-    setFinalSearchTerm(searchTerm); // Update final search term on button click
+    setFinalSearchTerm(searchTerm); 
   };
   const { data, isFetching } = useGetAllProductsQuery({
     search:  finalSearchTerm,
@@ -160,12 +161,15 @@ const AllProductPage = () => {
                   </p>
                   <p className="text-base font-bold">{category}</p>
                 </div>
-                <a
+                {/* <a
                   href="#"
                   className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 "
                 >
                   View Details
-                </a>
+                </a> */}
+                <Link to={_id} className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 ">
+                View Details
+                </Link>
               </div>
             </div>
           )
