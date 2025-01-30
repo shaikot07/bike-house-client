@@ -55,7 +55,7 @@ const NavBar2 = () => {
           <li>
             <Link
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
-              to={"/view-task"}
+              to={"/aboutUs"}
             >
              About us
             </Link>
@@ -149,9 +149,9 @@ const NavBar2 = () => {
                 ref={profileRef}
               >
                 <img
-                  src={user?.photoURL}
-                  title={user?.displayName}
-                  alt={user.displayName}
+                
+                
+                  // alt={user.displayName}
                   className="h-12 w-12 block cursor-pointer rounded-full border-2 border-black"
                 />
                 <ul
@@ -166,9 +166,9 @@ const NavBar2 = () => {
                       <FaUser /> My Profile
                     </li>
                   </Link>
-                  <Link to={"/view-task"}>
+                  <Link to={"/dashboard"}>
                     <li className="flex gap-2 items-center py-2 cursor-pointer">
-                      <FaTasks /> My Tasks
+                      <FaTasks /> Dashboard
                     </li>
                   </Link>
                   <li

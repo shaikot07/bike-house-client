@@ -1,21 +1,20 @@
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/allProduct/productManagement.api";
 
 const FeaturedProduct = () => {
-    const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const { isLoading, data } = useGetAllProductsQuery({});
   const products = data?.data?.slice(0, 4) || [];
 
   const handleClick = () => {
-    navigate("/product"); 
+    navigate("/product");
   };
 
   if (isLoading) return <p>Loading...</p>;
   return (
-    <div className="max-w-6xl mx-auto mt-6 mb-6">
-    
-      <h1 className="text-3xl font-extrabold ">New Bikes</h1>
+    <div className="max-w-6xl mx-auto mt-10 mb-6 ">
+      <h1 className="text-3xl font-extrabold pt-6 ">New Bikes</h1>
       <div className="grid grid-cols-1 mt-6 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
         {products.map(
           ({ _id, productImg, name, description, price, model, category }) => (
@@ -24,7 +23,12 @@ const FeaturedProduct = () => {
               onClick={handleClick}
               className="relative mt-2 cursor-pointer flex flex-col w-full max-w-[280px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
             >
-              <div className="relative  mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
+              {/* "New" Badge */}
+              <span className="absolute z-10 top-2 right-2 bg-[#F2355F] text-white text-xs font-bold px-2 py-1 rounded-lg shadow-md">
+                New
+              </span>
+
+              <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                 <img
                   className="object-cover w-full h-full"
                   src={productImg}
@@ -48,7 +52,6 @@ const FeaturedProduct = () => {
                   </p>
                   <p className="text-base font-bold">{category}</p>
                 </div>
-               
               </div>
             </div>
           )
