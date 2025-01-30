@@ -161,12 +161,7 @@ const AllProductPage = () => {
                   </p>
                   <p className="text-base font-bold">{category}</p>
                 </div>
-                {/* <a
-                  href="#"
-                  className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 "
-                >
-                  View Details
-                </a> */}
+             
                 <Link to={_id} className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 ">
                 View Details
                 </Link>

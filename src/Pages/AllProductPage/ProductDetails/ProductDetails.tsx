@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/allProduct/productManagement.api";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetails = () => {
-//   const { id } = useParams();
-//   const { data, isFetching } = useGetAllProductsQuery(undefined);
-
-//   const products = data?.data || [];
-//   const product = products.find((item) => item._id === id);
-
 const { id } = useParams();
 const { data, isFetching } = useGetAllProductsQuery(undefined);
 
@@ -17,24 +13,50 @@ const product = products.find((item) => item._id === id);
 
 const [quantity, setQuantity] = useState(1);
 const [totalPrice, setTotalPrice] = useState(product ? product.price : 0);
+const navigate = useNavigate();
+
+
+useEffect(() => {
+    if (product) {
+      setTotalPrice(product.price);
+    }
+  }, [product]);
 
 if (isFetching) return <p>Loading...</p>;
 if (!product) return <p>Product not found!</p>;
 
-const handleQuantityChange = (change) => {
-  const newQuantity = Math.max(1, quantity + change);
-  setQuantity(newQuantity);
-  setTotalPrice(newQuantity * product.price);
-};
+
+const handleQuantityChange = (change: number) => {
+    if (!product.inStock) {
+        toast.error("product is out of stock");
+      return;
+    }
+  
+    const newQuantity = quantity + change;
+  
+    if (newQuantity > product.quantity) {
+      toast.error(`only ${product.quantity} items are available in stock.`);
+      return;
+    }
+  
+    const validQuantity = Math.max(1, newQuantity);
+    setQuantity(validQuantity);
+  
+    const roundedTotalPrice = Math.round(validQuantity * product.price * 100) / 100;
+    setTotalPrice(roundedTotalPrice);
+  };
+  
+
 
 const handleBuyNow = () => {
+ 
   const orderDetails = {
     product: product._id,
     quantity,
     totalPrice,
   };
   console.log("Order Details:", orderDetails);
-  // You can send this data to an API or store it in Redux
+  navigate("/checkout", { state: orderDetails });
 };
 
 
@@ -70,6 +92,8 @@ const handleBuyNow = () => {
                   <p className="text-sm text-[#1A1D21]">Model: <strong >{product.model}</strong></p>
                   <span className="text-[#1A1D21]">|</span>
                   <p className="text-sm text-[#1A1D21]">Product: <strong> {product.inStock ? 'Available' : 'Stock Out'}</strong></p>
+                  <span className="text-[#1A1D21]">|</span>
+                  <p className="text-sm text-[#1A1D21]">Product: <strong> {product.quantity}</strong></p>
                 </div>
                 <div className="mt-2">
                   <p className="text-[#1A1D21] mt-1 text-sm">
@@ -147,6 +171,7 @@ const handleBuyNow = () => {
                   </button> */}
                   <button
                     type="button"
+                    onClick={handleBuyNow}
                     className="px-4  py-3 w-full mt-2 border bg-[#F2355F] hover:bg-black text-white text-sm font-semibold round rounded-md"
                   >
                     Buy it now
@@ -234,5 +259,5 @@ const handleBuyNow = () => {
 export default ProductDetails;
 
 
-// -----------------
+// // -----------------
 

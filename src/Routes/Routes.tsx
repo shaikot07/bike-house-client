@@ -5,6 +5,8 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import AllProductPage from "../Pages/AllProductPage/AllProductPage";
 import ProductDetails from "../Pages/AllProductPage/ProductDetails/ProductDetails";
+import ClickToCheckout from "../Pages/AllProductPage/proCheckoutPage/ClickToCheckout";
+import VerifyOrder from "../Pages/Order/VerifyOrder";
 
 
 
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
           {
                 path:'/product/:id',
                 element:<ProductDetails/>
+          },
+          {
+                path:'/checkout',
+                element:<ClickToCheckout/>
+          },
+          {
+                path:'order/verify',
+                element:<VerifyOrder/>
           },
           {
                 path:'login',
