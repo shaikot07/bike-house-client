@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../../redux/features/allProduct/productManagement.api";
+import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 

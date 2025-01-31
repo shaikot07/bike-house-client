@@ -42,13 +42,13 @@ const productManagementApi = baseApi.injectEndpoints({
         };
       },
     }),
-    // addAcademicSemester: builder.mutation({
-    //   query: (data) => ({
-    //     url: '/academic-semesters/create-academic-semester',
-    //     method: 'POST',
-    //     body: data,
-    //   }),
-    // }),
+    addProduct: builder.mutation({
+      query: (data) => ({
+        url: '/products',
+        method: 'POST',
+        body: data,
+      }),
+    }),
     // getAcademicFaculties: builder.query({
     //   query: () => {
     //     return { url: '/academic-faculties', method: 'GET' };
@@ -60,35 +60,30 @@ const productManagementApi = baseApi.injectEndpoints({
     //     };
     //   },
     // }),
-    // addAcademicFaculty: builder.mutation({
-    //   query: (data) => ({
-    //     url: '/academic-faculties/create-academic-faculty',
-    //     method: 'POST',
-    //     body: data,
-    //   }),
-    // }),
-    // getAcademicDepartments: builder.query({
-    //   query: () => {
-    //     return { url: '/academic-departments', method: 'GET' };
-    //   },
-    //   transformResponse: (response: TResponseRedux<TAcademicDepartment[]>) => {
-    //     return {
-    //       data: response.data,
-    //       meta: response.meta,
-    //     };
-    //   },
-    // }),
-    // addAcademicDepartment: builder.mutation({
-    //   query: (data) => ({
-    //     url: '/academic-departments/create-academic-department',
-    //     method: 'POST',
-    //     body: data,
-    //   }),
-    // }),
+    updatedProduct: builder.mutation({
+      query: ({ id, ...data }) => ({
+        url: `/products/${id}`, 
+        method: 'PUT',
+        body: data,
+      }),
+    }),
+
+    deleteProduct:builder.mutation({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: 'DELETE',
+      }),
+    })
+    
+
+ 
   }),
 });
 
 export const {
- useGetAllProductsQuery
+ useGetAllProductsQuery,
+ useAddProductMutation,
+ useUpdatedProductMutation,
+ useDeleteProductMutation
 
 } = productManagementApi;

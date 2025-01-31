@@ -46,7 +46,7 @@ const NavBar2 = () => {
         <>
           <li>
             <Link
-              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
+              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
               to={"/product"}
             >
               All Product
@@ -54,7 +54,7 @@ const NavBar2 = () => {
           </li>
           <li>
             <Link
-              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
+              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
               to={"/aboutUs"}
             >
              About us
@@ -66,22 +66,22 @@ const NavBar2 = () => {
         </>
       ) : (
         <>
-          <li>
+           <li>
             <Link
-              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
-              to={"/login"}
+              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
+              to={"/aboutUs"}
             >
-              Log In
+             About us
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
-              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
+              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
               to={"/signup"}
             >
               Sign up
             </Link>
-          </li>
+          </li> */}
         </>
       )}
     </>
@@ -111,7 +111,7 @@ const NavBar2 = () => {
               />
             </svg>
           </button>
-          <a href="#" title="">
+          <a href="/" title="">
             <img
               className="block w-auto h-14"
               src="https://i.ibb.co.com/KqBDrH7/bike-house.png"
@@ -137,12 +137,7 @@ const NavBar2 = () => {
             <p>Loading</p>
           ) : user ? (
             <>
-             <Link
-              className="rounded-none mr-3 text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300"
-              to={"/view-task"}
-            >
-             My Cart 
-            </Link>
+             
               <figure
                 className="relative w-16"
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -161,11 +156,11 @@ const NavBar2 = () => {
                       : "opacity-100 visible right-2"
                   }`}
                 >
-                  <Link to={"/my-profile"}>
+                  {/* <Link to={"dashboard/profile"}>
                     <li className="flex gap-2 items-center py-2 cursor-pointer">
                       <FaUser /> My Profile
                     </li>
-                  </Link>
+                  </Link> */}
                   <Link to={"/dashboard"}>
                     <li className="flex gap-2 items-center py-2 cursor-pointer">
                       <FaTasks /> Dashboard
@@ -181,9 +176,14 @@ const NavBar2 = () => {
               </figure>
             </>
           ) : (
-            <Link to={"/login"}>
-              <button className="my-btn-one">Log In</button>
+            <li>
+            <Link
+              className=" bg-[#1A1D21] rounded-md px-4 py-2 text-white font-bold hover:!text-white hover:bg-[#F2355F]  transition duration-300 focus:!text-white"
+              to={"/login"}
+            >
+              Log In
             </Link>
+          </li>
           )}
         </div>
       </div>

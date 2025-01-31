@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../../redux/features/allProduct/productManagement.api";
+import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
 
 const ShowroomBikes = () => {
   const navigate = useNavigate();

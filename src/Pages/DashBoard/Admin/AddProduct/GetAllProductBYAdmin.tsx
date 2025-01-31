@@ -1,61 +1,84 @@
 import React, { useState } from "react";
-import { useGetAllProductsQuery } from "../../redux/features/admin/productManagement.api";
+// import { useGetAllProductsQuery } from "../../redux/features/admin/productManagement.api";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDeleteProductMutation, useGetAllProductsQuery } from "../../../../redux/features/admin/productManagement.api";
+import { toast } from "sonner";
 
-const AllProductPage = () => {
+const GetAllProductBYAdmin = () => {
   //   const [searchTerm, setSearchTerm] = useState(undefined);
   const [searchTerm, setSearchTerm] = useState(undefined);
   const [filterCategory, setFilterCategory] = useState(undefined);
   const [filterInStock, setFilterInStock] = useState(undefined);
   const [sortOption, setSortOption] = useState(undefined);
-//   const [page, setPage] = useState(1);
-//   const [limit, setLimit] = useState(20);
+  const navigate = useNavigate();
+  //   const [page, setPage] = useState(1);
+  //   const [limit, setLimit] = useState(20);
   const [finalSearchTerm, setFinalSearchTerm] = useState(undefined);
 
   const handleFilterChange = (value) => {
     if (value === "all") {
-      setFilterCategory(undefined); 
+      setFilterCategory(undefined);
     } else {
-      setFilterCategory(value); 
+      setFilterCategory(value);
     }
   };
   const handleFilterInStock = (value) => setFilterInStock(value);
   const handleSortChange = (value) => setSortOption(value);
   const handleSearchClick = () => {
-    setFinalSearchTerm(searchTerm); 
+    setFinalSearchTerm(searchTerm);
   };
   const { data, isFetching } = useGetAllProductsQuery({
-    search:  finalSearchTerm,
+    search: finalSearchTerm,
     filter: filterCategory,
     inStock: filterInStock,
     sort: sortOption,
     // page,
     // limit,
   });
-
+ const [deleteProduct]=useDeleteProductMutation()
   const products = data?.data || [];
   console.log(products);
 
-  if (isFetching) return <div className="max-w-6xl mx-auto mt-8 text-center"><span className="justify-center loading loading-spinner loading-lg"></span></div>;
+  if (isFetching)
+    return (
+      <div className="max-w-6xl mx-auto mt-8 text-center">
+        <span className="justify-center loading loading-spinner loading-lg"></span>
+      </div>
+    );
 
-//   reset all 
+  //   reset all
   const resetFilters = () => {
     setFinalSearchTerm(undefined);
     setFilterCategory(undefined);
     setFilterInStock(undefined);
     setSortOption(undefined);
   };
+//   updated  product ar jono pataitechi 
+  const handleUpdateClick = (product) => {
+    console.log("navigating to update:", product);
+    navigate(`/dashboard/update-product/${product._id}`, { state: { product } });
+  };
 
-  
+//   for deleted operation
+const handleDeleteClick = async (id) => {
+    const  toastId="delete"
+    try {
+      const res = await deleteProduct(id).unwrap();
+    //   console.log('product deleted:', res);
+    toast.success(res?.message || "Product deleted successfully!", { id: toastId, duration: 2000 });
+    } catch (err:any) {
+      console.error( err);
+       toast.error(err?.data?.message || "Something went wrong", { id: toastId, duration: 2000 });
+    }
+  };
 
   return (
     <div className="max-w-6xl mx-auto pt-6">
       {/* <TestSearchComponent></TestSearchComponent> */}
       <div className="">
-          <h1 className="text-2xl font-bold mb-4">All Products</h1>
+        <h1 className="text-2xl font-bold mb-4">All Products</h1>
         <div className="max-w-6xl mx-auto pt-4 ">
-
           {/* Search, Filter, and Sort Options */}
           <div className="flex flex-wrap gap-6   ">
             {/* Filter Dropdown */}
@@ -102,7 +125,7 @@ const AllProductPage = () => {
               <input
                 type="search"
                 id="search-dropdown"
-                value={searchTerm || ""} 
+                value={searchTerm || ""}
                 onChange={(e) => setSearchTerm(e.target.value)} // update searchTer input change
                 className="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-sm border-s-gray-50 border-s-2 border border-gray-300"
                 placeholder="Search Product by Name, Model, Brand'..."
@@ -119,20 +142,19 @@ const AllProductPage = () => {
             </div>
           </div>
           <button
-              onClick={resetFilters}
-              className="w-full sm:w-48 mt-1 px-4 py-2 text-[#F2355F] border-1 border-[#080808] rounded-md shadow-sm   focus:ring-1"
-            >
-              Reset 
-            </button>
+            onClick={resetFilters}
+            className="w-full sm:w-48 mt-1 px-4 py-2 text-[#F2355F] border-1 border-[#080808] rounded-md shadow-sm   focus:ring-1"
+          >
+            Reset
+          </button>
         </div>
-        <div>
-        </div>
+        <div></div>
       </div>
 
       {/* -------------------------------------  */}
       <div className="grid grid-cols-1 mt-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
         {products.map(
-          ({ _id, productImg, name, description, price, model, category }) => (
+          ({ _id, productImg, name, description, price, model, category,brand,quantity }) => (
             <div
               key={_id}
               className="relative mt-2 flex flex-col w-full max-w-[280px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
@@ -161,10 +183,21 @@ const AllProductPage = () => {
                   </p>
                   <p className="text-base font-bold">{category}</p>
                 </div>
-             
-                <Link to={_id} className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 ">
-                View Details
-                </Link>
+
+                <div className="flex gap-2 mx-auto">
+                  <button
+                    onClick={() => handleDeleteClick(_id)}
+                    className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 "
+                  >
+                    deleted
+                  </button>
+                  <button
+                   onClick={() => handleUpdateClick({ _id, name, price, description, productImg, model, category,brand,quantity })}
+                    className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#F2355F] focus:outline-none focus:ring-4 "
+                  >
+                   updated
+                  </button>
+                </div>
               </div>
             </div>
           )
@@ -174,4 +207,4 @@ const AllProductPage = () => {
   );
 };
 
-export default AllProductPage;
+export default GetAllProductBYAdmin;

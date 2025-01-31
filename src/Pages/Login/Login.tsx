@@ -29,11 +29,11 @@ const Login = () => {
       console.log("User Info:", userInfo);
   
       const res = await login(userInfo).unwrap();
-      console.log("API Response:", res);
+      // console.log("API Response:", res);
   
       if (res.success) {
         const user = verifyToken(res.data.token) as TUser;
-        console.log("Decoded User:", user);
+        // console.log("Decoded User:", user);
   
         dispatch(setUser({ user: user, token: res.data.token }));
         toast.success(`${res.message}`, { id: toastId, duration: 2000 });

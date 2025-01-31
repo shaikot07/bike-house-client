@@ -14,7 +14,7 @@ const VerifyOrder = () => {
 
   const orderData = data?.data?.[0];
   console.log("very", orderData);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <div className="max-w-6xl mx-auto mt-8 text-center"><span className="justify-center loading loading-spinner loading-lg"></span></div>;;
   return (
     <div>
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
@@ -56,7 +56,7 @@ const VerifyOrder = () => {
 
           <div className="mt-12">
             <a
-              href="/"
+              href="/dashboard"
               className="inline-block px-8 py-4 text-lg font-semibold text-white transition-colors duration-200 bg-[#F2355F] hover:bg-black rounded-md"
             >
               Return to Dashboard

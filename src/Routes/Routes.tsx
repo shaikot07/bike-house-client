@@ -11,6 +11,12 @@ import AboutUs from "../Pages/About us/AboutUs";
 import Dashboard from "../LayOut/Dashboard";
 import AdminHome from "../Pages/DashBoard/Admin/AdminHome/AdminHome";
 import AllUser from "../Pages/DashBoard/Admin/AdminHome/Admin-user-Management/Alluser";
+import AddProduct from "../Pages/DashBoard/Admin/AddProduct/AddProduct";
+import GetAllProductBYAdmin from "../Pages/DashBoard/Admin/AddProduct/GetAllProductBYAdmin";
+import UpdatedProduct from "../Pages/DashBoard/Admin/AddProduct/UpdatedProduct";
+import ProductsUpdated from "../Pages/DashBoard/Admin/AddProduct/ProductsUpdated";
+import CustomerHome from "../Pages/DashBoard/CustomerDashboard/CustomerHome";
+import CustomerProfile from "../Pages/DashBoard/CustomerDashboard/CustomerProfile";
 
 
 
@@ -63,27 +69,15 @@ export const router = createBrowserRouter([
           
           children: [
                 // normal user routers 
-            //     {
-            //           path: 'userHome',
-            //           element:<UserHome></UserHome>
-            //     },
-            //     {
-            //           path: 'PremiumArticles',
-            //           element:<PrivateRoute><PremiumArticles></PremiumArticles></PrivateRoute>
-            //     },
-            //     {
-            //           path: 'profile',
-            //           element:<PrivateRoute><MyProfile></MyProfile></PrivateRoute>
-            //     },
-            //     {
-            //           path: 'myArticle',
-            //           element:<PrivateRoute><MyArticle></MyArticle></PrivateRoute>
-            //     },
-            //     {
-            //           path:'updateArticle/:id',
-            //           element:<UpdateArticle></UpdateArticle>,
-                     
-            //     },
+                {
+                      path: 'userHome',
+                      element:<CustomerHome/>
+                },
+                {
+                      path: 'profile',
+                      element:<CustomerProfile></CustomerProfile>
+                },
+      
                 
                 // admin only routes 
                 {
@@ -94,14 +88,18 @@ export const router = createBrowserRouter([
                       path:'allUser',
                       element:<AllUser/>
                 },
-            //     {
-            //           path:'allArticle',
-            //           element:<AdminPrivateRoute><AdminAllArticlePage></AdminAllArticlePage></AdminPrivateRoute>
-            //     },
-            //     {
-            //           path:'addPublisher',
-            //           element:<AdminPrivateRoute><AddPublisher></AddPublisher></AdminPrivateRoute>
-            //     },
+                {
+                      path:'getAllProductByAdmin',
+                      element:<GetAllProductBYAdmin/>
+                },
+                {
+                      path:'addProduct',
+                      element:<AddProduct/>
+                },
+                {
+                      path:'update-product/:id',
+                      element:<ProductsUpdated/>
+                },
             //     {
             //           path:'adminProfile',
             //           element:<AdminPrivateRoute><AdminProfile></AdminProfile> </AdminPrivateRoute>
