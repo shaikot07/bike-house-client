@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation,  } from "react-router-dom";
 import { FaStarOfLife } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "sonner";
@@ -36,52 +37,7 @@ const ProductsUpdated = () => {
     },
   });
 
-//   const onSubmit = async (data: any) => {
-//     setIsLoading(true);
-//     console.log(data);
-  
-//     const toastId = toast.loading("Adding product...");
-  
-//     try {
-//       // Initialize formData and image upload logic
-//       let imageUrl: string | undefined;
-  
-//       // Check if productImg exists and is a valid file
-//       if (data.productImg && data.productImg[0]) {
-//         const file = data.productImg[0];
-//         const formData = new FormData();
-//         formData.append("file", file);
-//         formData.append("upload_preset", UPLOAD_PRESET);
-  
-//         const uploadResponse = await axios.post(
-//           `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-//           formData
-//         );
-  
-//         imageUrl = uploadResponse.data.secure_url;
-//       }
-  
-//       // If image is uploaded, set the productImg URL in the data
-//       if (imageUrl) {
-//         data.productImg = imageUrl;
-//       }
-  
-//       // Add inStock field and submit the product as a default
-//       const productData = { ...data, inStock: true };
-//       console.log(productData);
-  
-//       // Call the API to update the product
-//       const response = await updatedProduct(productData).unwrap();
-//       toast.success(response?.message || "Product added successfully!", { id: toastId });
-  
-//       reset();
-//     } catch (err: any) {
-//       console.error("Error submitting form:", err);
-//       toast.error(err?.data?.message || "Something went wrong", { id: toastId, duration: 2000 });
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
+
   
 const onSubmit = async (data: any) => {
     setIsLoading(true);

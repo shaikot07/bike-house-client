@@ -57,31 +57,29 @@ const NavBar2 = () => {
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
               to={"/aboutUs"}
             >
-             About us
+              About us
             </Link>
           </li>
-          <li>
-           
-          </li>
+          <li></li>
         </>
       ) : (
         <>
-           <li>
+          <li>
+            <Link
+              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
+              to={"/product"}
+            >
+              All Product
+            </Link>
+          </li>
+          <li>
             <Link
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
               to={"/aboutUs"}
             >
-             About us
+              About us
             </Link>
           </li>
-          {/* <li>
-            <Link
-              className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
-              to={"/signup"}
-            >
-              Sign up
-            </Link>
-          </li> */}
         </>
       )}
     </>
@@ -137,15 +135,12 @@ const NavBar2 = () => {
             <p>Loading</p>
           ) : user ? (
             <>
-             
               <figure
                 className="relative w-16"
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
                 ref={profileRef}
               >
                 <img
-                
-                
                   // alt={user.displayName}
                   className="h-12 w-12 block cursor-pointer rounded-full border-2 border-black"
                 />
@@ -177,13 +172,13 @@ const NavBar2 = () => {
             </>
           ) : (
             <li>
-            <Link
-              className=" bg-[#1A1D21] rounded-md px-4 py-2 text-white font-bold hover:!text-white hover:bg-[#F2355F]  transition duration-300 focus:!text-white"
-              to={"/login"}
-            >
-              Log In
-            </Link>
-          </li>
+              <Link
+                className=" bg-[#1A1D21] rounded-md px-4 py-2 text-white font-bold hover:!text-white hover:bg-[#F2355F]  transition duration-300 focus:!text-white"
+                to={"/login"}
+              >
+                Log In
+              </Link>
+            </li>
           )}
         </div>
       </div>

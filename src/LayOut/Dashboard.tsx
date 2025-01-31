@@ -4,6 +4,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { MdPublish } from "react-icons/md";
 import { selectCurrentUser } from '../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
+import { FaBagShopping } from 'react-icons/fa6';
 
 const Dashboard = () => {
   
@@ -35,13 +36,13 @@ const Dashboard = () => {
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/getAllProductByAdmin"><FaBookReader /> All Products</NavLink></li>
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/addProduct"><MdPublish /> Add Product</NavLink></li>
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/adminProfile"><FaAddressBook /> Admin Profile</NavLink></li>
+                            <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/adminOrderDeltas"><FaBagShopping /> Order Deltas</NavLink></li>
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/"><FaHome /> Home</NavLink></li>
                         </>
                     ) : (
                         <>
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/userHome"><FaHome /> User Home</NavLink></li>
                             
-                           
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/profile"><FaAddressBook /> My Profile</NavLink></li>
                             
                             <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/"><FaHome /> Home</NavLink></li>

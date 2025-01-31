@@ -9,9 +9,15 @@ const orderApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
-    getOrders: builder.query({
+    getOrdersAdmin: builder.query({
       query: () => ({
         url: "orders/get-all-orders",
+        method: "GET",
+      }),
+    }),
+    getOrdersByUser: builder.query({
+      query: () => ({
+        url: "orders/get-user-order",
         method: "GET",
       }),
     }),
@@ -27,6 +33,7 @@ const orderApi = baseApi.injectEndpoints({
 
 export const {
   useCreateOrderMutation,
-  useGetOrdersQuery,
+  useGetOrdersAdminQuery,
   useVerifyOrderQuery,
+  useGetOrdersByUserQuery
 } = orderApi;

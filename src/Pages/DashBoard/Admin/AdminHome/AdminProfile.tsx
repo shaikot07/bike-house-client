@@ -1,8 +1,9 @@
 import React from "react";
-import avater from '../../../assets/av.webp'
+import avater from '../../../../assets/av.webp'
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-const CustomerProfile = () => {
+import { selectCurrentUser } from "../../../../redux/features/auth/authSlice";
+// import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+const AdminProfile = () => {
     const user = useSelector(selectCurrentUser);
   return (
     <div className=" flex justify-center items-center  max-w-6x mt-14">
@@ -87,4 +88,4 @@ const CustomerProfile = () => {
   );
 };
 
-export default CustomerProfile;
+export default AdminProfile;

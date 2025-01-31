@@ -1,6 +1,6 @@
 import React from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
@@ -9,6 +9,7 @@ import { verifyToken } from "../../utils/verifyToken";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
   const {
@@ -39,7 +40,7 @@ const Login = () => {
         toast.success(`${res.message}`, { id: toastId, duration: 2000 });
   
         // Navigate to the homepage
-        navigate(`/`);
+        navigate(location.state?.from?.pathname || "/dashboard", { replace: true });
       } else {
         throw new Error(res.message || "Login failed");
       }

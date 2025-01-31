@@ -66,6 +66,7 @@ const productManagementApi = baseApi.injectEndpoints({
         method: 'PUT',
         body: data,
       }),
+      invalidatesTags: ["product"],
     }),
 
     deleteProduct:builder.mutation({
@@ -73,6 +74,7 @@ const productManagementApi = baseApi.injectEndpoints({
         url: `/products/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ["product"]
     })
     
 

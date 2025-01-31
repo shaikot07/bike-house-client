@@ -3,7 +3,7 @@ import React from "react";
 import { useBlockUserMutation, useGetAllUsersQuery } from "../../../../../redux/features/admin/userManagement.api";
 import { toast } from "sonner";
 
-const AllUser = () => {
+const AllUsers = () => {
   const { data, error, isLoading } = useGetAllUsersQuery(undefined);
   const [ blockUser]=useBlockUserMutation()
   const users = data?.data || [];
@@ -68,4 +68,4 @@ const AllUser = () => {
   );
 };
 
-export default AllUser;
+export default AllUsers;

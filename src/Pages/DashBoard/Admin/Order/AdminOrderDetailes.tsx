@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import { useGetUserAllOrderQuery } from "../../../redux/features/user-customer/UserEndManagement.api";
-import { useGetAllUsersQuery } from "../../../redux/features/admin/userManagement.api";
+import React from 'react';
+import { useGetOrdersAdminQuery } from '../../../../redux/features/order/order';
 
-const CustomerHome = () => {
-  const { data, error, isLoading } = useGetAllUsersQuery(undefined);
-
-  const orders = data?.data || [];
-  console.log(orders);
-
-  return (
-    <div>
+const AdminOrderDetailes = () => {
+     const { data, error, isLoading } =useGetOrdersAdminQuery (undefined);
+    
+      const orders = data?.data || [];
+      console.log(orders);
+    return (
+        <div>
       
       <div>
-        <h1 className="text-3xl p-4 text-center">Order History</h1>
+        <h1 className="text-3xl p-4 text-center"> admin Order History</h1>
 
         <div className="text-gray-900 bg-gray-200 px-3 py-4 flex justify-center">
           {isLoading ? (
@@ -54,7 +52,7 @@ const CustomerHome = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default CustomerHome;
+export default AdminOrderDetailes;
