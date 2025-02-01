@@ -14,7 +14,7 @@ const ShowroomBikes = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <div className="max-w-6xl mx-auto mt-10 mb-6">
-      <h1 className="text-3xl pt-6 font-extrabold ">New Bikes</h1>
+      <h1 className="text-3xl pt-6 font-extrabold ">Showroom Bikes</h1>
       <div className="grid grid-cols-1 mt-6 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
         {products.map(
           ({ _id, productImg, name, description, price, model, category }) => (

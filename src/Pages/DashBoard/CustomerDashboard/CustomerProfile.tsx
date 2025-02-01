@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 const CustomerProfile = () => {
     const user = useSelector(selectCurrentUser);
+    console.log(user);
   return (
     <div className=" flex justify-center items-center  max-w-6x mt-14">
       <div className="w-96 px-6 py-6  text-center bg-gray-800 rounded-lg lg:mt-0 xl:px-10">
@@ -17,6 +18,7 @@ const CustomerProfile = () => {
             <div className="flex justify-center items-center flex-col space-y-3 text-lg font-medium leading-6">
               <h3 className="text-white">{user?.email}</h3>
               <p className="text-indigo-300">{user?.role}</p>
+              <p className="text-indigo-300">{user?.name}</p>
               <div className="flex justify-center mt-5 space-x-5">
                 <a
                   href="#"
