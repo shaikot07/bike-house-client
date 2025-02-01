@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import  { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useCreateOrderMutation } from "../../../redux/features/order/order";
 import { toast } from "sonner";
@@ -49,8 +50,9 @@ useEffect(() => {
   }
 
   if (isError) {
-    toast.error(error?.message || "Something went wrong!", { id: toastId });
-    console.error(error);
+    const errorMessage = (error as any)?.message || "Something went wrong!";
+    toast.error(errorMessage, { id: toastId });
+    console.error(errorMessage);
   }
 }, [data, error, isError, isLoading, isSuccess]);
 

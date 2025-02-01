@@ -13,7 +13,8 @@ import AdminHome from "../Pages/DashBoard/Admin/AdminHome/AdminHome";
 import AllUser from "../Pages/DashBoard/Admin/AdminHome/Admin-user-Management/AllUsers";
 import AddProduct from "../Pages/DashBoard/Admin/AddProduct/AddProduct";
 import GetAllProductBYAdmin from "../Pages/DashBoard/Admin/AddProduct/GetAllProductBYAdmin";
-import UpdatedProduct from "../Pages/DashBoard/Admin/AddProduct/UpdatedProduct";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// import UpdatedProduct from "../Pages/DashBoard/Admin/AddProduct/UpdatedProduct";
 import ProductsUpdated from "../Pages/DashBoard/Admin/AddProduct/ProductsUpdated";
 import CustomerHome from "../Pages/DashBoard/CustomerDashboard/CustomerHome";
 import CustomerProfile from "../Pages/DashBoard/CustomerDashboard/CustomerProfile";

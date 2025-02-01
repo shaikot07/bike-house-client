@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   BaseQueryApi,
   BaseQueryFn,
@@ -11,7 +12,8 @@ import { logout, setUser } from '../features/auth/authSlice';
 import { toast } from 'sonner';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
+  baseUrl: 'https://l-2-assignment-bike-store-server.vercel.app/api',
+  // baseUrl: 'http://localhost:5000/api',
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -32,10 +34,11 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 404) {
-    toast.error(result.error.data.message);
+    const errorData = result.error.data as { message: string };
+    toast.error(errorData.message);
   }
   if (result?.error?.status === 403) {
-    toast.error(result.error.data.message);
+    toast.error((result.error.data as { message: string }).message);
   }
   if (result?.error?.status === 401) {
     //* Send Refresh

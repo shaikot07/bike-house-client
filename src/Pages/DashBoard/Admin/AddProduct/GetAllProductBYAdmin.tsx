@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import  { useState } from "react";
 // import { useGetAllProductsQuery } from "../../redux/features/admin/productManagement.api";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDeleteProductMutation, useGetAllProductsQuery } from "../../../../redux/features/admin/productManagement.api";
 import { toast } from "sonner";
 
 const GetAllProductBYAdmin = () => {
   //   const [searchTerm, setSearchTerm] = useState(undefined);
-  const [searchTerm, setSearchTerm] = useState(undefined);
-  const [filterCategory, setFilterCategory] = useState(undefined);
-  const [filterInStock, setFilterInStock] = useState(undefined);
-  const [sortOption, setSortOption] = useState(undefined);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterCategory, setFilterCategory] = useState<string | undefined>(undefined);
+  const [filterInStock, setFilterInStock] = useState<string | undefined>(undefined);
+  const [sortOption, setSortOption] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
   //   const [page, setPage] = useState(1);
   //   const [limit, setLimit] = useState(20);
-  const [finalSearchTerm, setFinalSearchTerm] = useState(undefined);
+  const [finalSearchTerm, setFinalSearchTerm] = useState<string | undefined>(undefined);
 
-  const handleFilterChange = (value) => {
+  const handleFilterChange = (value:any) => {
     if (value === "all") {
       setFilterCategory(undefined);
     } else {
       setFilterCategory(value);
     }
   };
-  const handleFilterInStock = (value) => setFilterInStock(value);
-  const handleSortChange = (value) => setSortOption(value);
+  const handleFilterInStock = (value:any) => setFilterInStock(value);
+  const handleSortChange = (value:any) => setSortOption(value);
   const handleSearchClick = () => {
     setFinalSearchTerm(searchTerm);
   };
@@ -35,7 +36,7 @@ const GetAllProductBYAdmin = () => {
     sort: sortOption,
     // page,
     // limit,
-  });
+  },{ refetchOnMountOrArgChange: true });
  const [deleteProduct]=useDeleteProductMutation()
   const products = data?.data || [];
   console.log(products);
@@ -55,13 +56,13 @@ const GetAllProductBYAdmin = () => {
     setSortOption(undefined);
   };
 //   updated  product ar jono pataitechi 
-  const handleUpdateClick = (product) => {
+  const handleUpdateClick = (product:any) => {
     console.log("navigating to update:", product);
     navigate(`/dashboard/update-product/${product._id}`, { state: { product } });
   };
 
 //   for deleted operation
-const handleDeleteClick = async (id) => {
+const handleDeleteClick = async (id:any) => {
     const  toastId="delete"
     try {
       const res = await deleteProduct(id).unwrap();

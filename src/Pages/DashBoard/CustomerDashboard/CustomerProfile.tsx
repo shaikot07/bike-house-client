@@ -1,4 +1,4 @@
-import React from "react";
+
 import avater from '../../../assets/av.webp'
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";

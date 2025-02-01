@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRegisterMutation } from "../../redux/features/auth/authApi";
@@ -12,7 +12,7 @@ const Registration = () => {
     formState: { errors },
   } = useForm();
 
-  const [registerUser, { isLoading }] = useRegisterMutation();
+  const [registerUser, ] = useRegisterMutation();
 
   const onSubmit = async (data: FieldValues) => {
     console.log("Form Data:", data);
@@ -60,7 +60,7 @@ const Registration = () => {
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
+                    {typeof errors.email?.message === "string" && errors.email.message}
                   </p>
                 )}
               </div>
@@ -82,7 +82,7 @@ const Registration = () => {
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
+                    {typeof errors.email?.message === "string" && errors.email.message}
                   </p>
                 )}
               </div>
@@ -111,7 +111,7 @@ const Registration = () => {
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.password.message}
+                    {typeof errors.password.message === "string" && errors.password.message}
                   </p>
                 )}
               </div>

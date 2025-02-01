@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
@@ -40,7 +40,7 @@ const Login = () => {
         toast.success(`${res.message}`, { id: toastId, duration: 2000 });
   
         // Navigate to the homepage
-        navigate(location.state?.from?.pathname || "/dashboard", { replace: true });
+        navigate(location.state?.from?.pathname || "/", { replace: true });
       } else {
         throw new Error(res.message || "Login failed");
       }
@@ -81,7 +81,7 @@ const Login = () => {
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.email.message}
+                    {errors?.email?.message?.toString()}
                   </p>
                 )}
               </div>
@@ -110,7 +110,7 @@ const Login = () => {
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors.password.message}
+                    {errors.password.message?.toString()}
                   </p>
                 )}
               </div>

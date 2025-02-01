@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { FaAddressBook, FaBook, FaBookReader, FaHome, FaUsers, FaBars } from 'react-icons/fa';
+import  { useEffect, useState } from 'react';
+import { FaAddressBook,  FaBookReader, FaHome, FaUsers, FaBars } from 'react-icons/fa';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { MdPublish } from "react-icons/md";
 import { selectCurrentUser } from '../redux/features/auth/authSlice';

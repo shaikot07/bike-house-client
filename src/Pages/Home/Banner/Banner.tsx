@@ -1,4 +1,4 @@
-import React from "react";
+
 import bgV1 from "../../../assets/bg-v-1.mp4";
 const Banner = () => {
   return (

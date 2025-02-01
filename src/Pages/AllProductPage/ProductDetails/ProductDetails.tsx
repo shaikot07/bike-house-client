@@ -1,65 +1,64 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 const ProductDetails = () => {
-const { id } = useParams();
-const { data, isFetching } = useGetAllProductsQuery(undefined);
+  const { id } = useParams();
+  const { data, isFetching } = useGetAllProductsQuery(undefined);
 
-const products = data?.data || [];
-const product = products.find((item) => item._id === id);
+  const products = data?.data || [];
+  const product = products.find((item) => item._id === id);
 
-const [quantity, setQuantity] = useState(1);
-const [totalPrice, setTotalPrice] = useState(product ? product.price : 0);
-const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(product ? product.price : 0);
+  const navigate = useNavigate();
 
-
-useEffect(() => {
+  useEffect(() => {
     if (product) {
       setTotalPrice(product.price);
     }
   }, [product]);
 
-if (isFetching) return <p>Loading...</p>;
-if (!product) return <p>Product not found!</p>;
+  if (isFetching)
+    return (
+      <div className="max-w-6xl mx-auto mt-8 text-center">
+        <span className="justify-center loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  if (!product) return <p className="text-5xl text-center mt-10">Product not found!</p>;
 
-
-const handleQuantityChange = (change: number) => {
+  const handleQuantityChange = (change: number) => {
     if (!product.inStock) {
-        toast.error("product is out of stock");
+      toast.error("product is out of stock");
       return;
     }
-  
+
     const newQuantity = quantity + change;
-  
+
     if (newQuantity > product.quantity) {
       toast.error(`only ${product.quantity} items are available in stock.`);
       return;
     }
-  
+
     const validQuantity = Math.max(1, newQuantity);
     setQuantity(validQuantity);
-  
-    const roundedTotalPrice = Math.round(validQuantity * product.price * 100) / 100;
+
+    const roundedTotalPrice =
+      Math.round(validQuantity * product.price * 100) / 100;
     setTotalPrice(roundedTotalPrice);
   };
-  
 
-
-const handleBuyNow = () => {
- 
-  const orderDetails = {
-    product: product._id,
-    quantity,
-    totalPrice,
+  const handleBuyNow = () => {
+    const orderDetails = {
+      product: product._id,
+      quantity,
+      totalPrice,
+    };
+    console.log("Order Details:", orderDetails);
+    navigate("/checkout", { state: orderDetails });
   };
-  console.log("Order Details:", orderDetails);
-  navigate("/checkout", { state: orderDetails });
-};
-
-
 
   if (isFetching) return <p>Loading...</p>;
   if (!product) return <p>Product not found!</p>;
@@ -85,15 +84,24 @@ const handleBuyNow = () => {
             <div className="w-full">
               <div>
                 <h3 className="text-lg sm:text-xl font-bold text-[#1A1D21]">
-                 {product.name}
+                  {product.name}
                 </h3>
                 <div className="flex items-center gap-3 mt-1">
-              
-                  <p className="text-sm text-[#1A1D21]">Model: <strong >{product.model}</strong></p>
+                  <p className="text-sm text-[#1A1D21]">
+                    Model: <strong>{product.model}</strong>
+                  </p>
                   <span className="text-[#1A1D21]">|</span>
-                  <p className="text-sm text-[#1A1D21]">Product: <strong> {product.inStock ? 'Available' : 'Stock Out'}</strong></p>
+                  <p className="text-sm text-[#1A1D21]">
+                    Product:{" "}
+                    <strong>
+                      {" "}
+                      {product.inStock ? "Available" : "Stock Out"}
+                    </strong>
+                  </p>
                   <span className="text-[#1A1D21]">|</span>
-                  <p className="text-sm text-[#1A1D21]">Product: <strong> {product.quantity}</strong></p>
+                  <p className="text-sm text-[#1A1D21]">
+                    Product: <strong> {product.quantity}</strong>
+                  </p>
                 </div>
                 <div className="mt-2">
                   <p className="text-[#1A1D21] mt-1 text-sm">
@@ -108,21 +116,21 @@ const handleBuyNow = () => {
                   <h4 className="text-black text-2xl sm:text-3xl font-bold">
                     $ {product.price}
                   </h4>
-                 
+
                   <div className="flex py-1 px-2 bg-black font-semibold !ml-4 round rounded-md">
                     <span className="text-white text-sm">No copun avable</span>
                   </div>
                 </div>
-
-                
               </div>
 
               <hr className="my-6 border-gray-300" />
 
               <div>
                 <div className="flex gap-2 items-center border border-gray-300 bg-white px-3 py-2.5 w-max">
-                  <button type="button" className="border-none outline-none"
-                   onClick={() => handleQuantityChange(-1)}
+                  <button
+                    type="button"
+                    className="border-none outline-none"
+                    onClick={() => handleQuantityChange(-1)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -136,10 +144,12 @@ const handleBuyNow = () => {
                     </svg>
                   </button>
                   <span className="text-gray-800 text-sm font-semibold px-3">
-                  {quantity}
+                    {quantity}
                   </span>
-                  <button type="button" className="border-none outline-none"
-                  onClick={() => handleQuantityChange(1)}
+                  <button
+                    type="button"
+                    className="border-none outline-none"
+                    onClick={() => handleQuantityChange(1)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +168,7 @@ const handleBuyNow = () => {
                   </button>
                 </div>
                 <div className="mt-2">
-                <h4 className="text-black text-2xl sm:text-3xl font-bold">
+                  <h4 className="text-black text-2xl sm:text-3xl font-bold">
                     Total Price: ${totalPrice}
                   </h4>
                 </div>
@@ -180,8 +190,6 @@ const handleBuyNow = () => {
               </div>
 
               <hr className="my-6 border-gray-300" />
-
-              
 
               <div className="flex justify-between gap-4 mt-6">
                 <div className="text-center">
@@ -245,10 +253,11 @@ const handleBuyNow = () => {
                     Free Delivery On Orders Above $100
                   </p>
                 </div>
-               
               </div>
             </div>
-            <p className="text-[#F2355F] underline cursor-pointer">Do you have any questions?</p>
+            <p className="text-[#F2355F] underline cursor-pointer">
+              Do you have any questions?
+            </p>
           </div>
         </div>
       </div>
@@ -258,6 +267,4 @@ const handleBuyNow = () => {
 
 export default ProductDetails;
 
-
 // // -----------------
-

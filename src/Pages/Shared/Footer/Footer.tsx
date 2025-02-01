@@ -1,6 +1,5 @@
-import React from "react";
+
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
-import { IconName } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="relative bg-[#1A1D21] text-[#9FA0A2] pt-12 pb-6">

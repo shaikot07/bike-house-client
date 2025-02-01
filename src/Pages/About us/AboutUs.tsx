@@ -1,4 +1,4 @@
-import React from "react";
+
 import vieo from '../../assets/bic.mp4'
 
 const AboutUs = () => {

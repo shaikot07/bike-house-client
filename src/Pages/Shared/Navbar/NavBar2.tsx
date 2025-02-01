@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaSignOutAlt, FaTasks, FaUser } from "react-icons/fa";
+import { FaSignOutAlt, FaTasks,  } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   logout,
   selectCurrentUser,
 } from "../../../redux/features/auth/authSlice";
+
 
 const NavBar2 = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -13,11 +15,11 @@ const NavBar2 = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
 
-  const profileRef = useRef(null);
+  const profileRef = useRef<HTMLDivElement>(null);
   const loading = false;
 
   useEffect(() => {
-    const handleOutsideClick = (event) => {
+    const handleOutsideClick = (event: { target: any; }) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setIsProfileOpen(false);
       }

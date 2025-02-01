@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+
 // Import Swiper React components
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+// import "swiper/css";
+import "swiper/swiper-bundle.css";
 
 import "./testimonials.css";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, } from "swiper/modules";
 const Testimonials = () => {
   return (
     <div className="mb-10 mt-5">
@@ -20,7 +20,7 @@ const Testimonials = () => {
             Testimonials
           </h2>
           <Swiper
-            navigation={true}
+            // navigation={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }} // Autoplay settings
             modules={[Autoplay]}
             className="text-justify"
@@ -36,10 +36,10 @@ const Testimonials = () => {
             >
               <div className="flex flex-col items-center mx-4 lg:mx-24 my-6">
                 {/* reating here  */}
-                <p className="py-8   text-[#1A1D21] text-justify font-bold text-base lg:text-2xl">
+                <p className="py-8 text-[#1A1D21] text-center font-bold text-base lg:text-2xl max-w-3xl mx-auto leading-relaxed">
                 “ Want to ride an actual pro bike? Bikeroom has you covered. Each one is inspected by a team under the supervision of a World Tour mechanic. ”
                 </p>
-                <h3 className="text-1xl text-[#1A1D21] ">- crestfer</h3>
+                <h3 className="text-1xl text-[#1A1D21] ">- shaikot</h3>
               </div>
             </SwiperSlide>
             <SwiperSlide
@@ -47,7 +47,7 @@ const Testimonials = () => {
             >
               <div className="flex flex-col items-center mx-4 lg:mx-24 my-6">
                 {/* reating here  */}
-                <p className="py-8   text-[#1A1D21] text-justify font-bold text-base lg:text-2xl">
+                <p className="py-8 text-[#1A1D21] text-center font-bold text-base lg:text-2xl max-w-3xl mx-auto leading-relaxed">
                 “ Want to ride an actual pro bike? Bikeroom has you covered. Each one is inspected by a team under the supervision of a World Tour mechanic. ”
                 </p>
                 <h3 className="text-1xl text-[#1A1D21] ">- crestfer</h3>
@@ -58,10 +58,10 @@ const Testimonials = () => {
             >
               <div className="flex flex-col  items-center mx-4 lg:mx-24 my-6">
                 {/* reating here  */}
-                <p className="py-8   text-[#1A1D21] text-justify font-bold text-base lg:text-2xl">
+                <p className="py-8 text-[#1A1D21] text-center font-bold text-base lg:text-2xl max-w-3xl mx-auto leading-relaxed">
                 “ Want to ride an actual pro bike? Bikeroom has you covered. Each one is inspected by a team under the supervision of a World Tour mechanic. ”
                 </p>
-                <h3 className="text-1xl text-[#1A1D21] ">- crestfer</h3>
+                <h3 className="text-1xl text-[#1A1D21] ">- thomes</h3>
               </div>
             </SwiperSlide>
           </Swiper>

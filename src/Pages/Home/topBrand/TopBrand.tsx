@@ -1,4 +1,4 @@
-import React from "react";
+
 import b1 from "../../../assets/b-1.webp";
 import b2 from "../../../assets/b-2.webp";
 import b3 from "../../../assets/b-3.webp";

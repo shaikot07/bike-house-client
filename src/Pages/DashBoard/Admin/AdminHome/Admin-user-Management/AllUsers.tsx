@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+
 import { useBlockUserMutation, useGetAllUsersQuery } from "../../../../../redux/features/admin/userManagement.api";
 import { toast } from "sonner";
 

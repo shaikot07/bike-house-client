@@ -1,8 +1,8 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useGetRevenueDataQuery } from "../../../../redux/features/admin/order/orderManagement.api";
 
 const AdminHome = () => {
-  const { data, error, isLoading } = useGetRevenueDataQuery(undefined);
+  const { data,  } = useGetRevenueDataQuery(undefined);
   const revenue = data?.data || [];
   console.log(revenue);
 

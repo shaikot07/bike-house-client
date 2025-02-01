@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import { useGetUserAllOrderQuery } from "../../../redux/features/user-customer/UserEndManagement.api";
-import { useGetAllUsersQuery } from "../../../redux/features/admin/userManagement.api";
+
+import { useGetOrdersByUserQuery } from "../../../redux/features/order/order";
 
 const CustomerHome = () => {
-  const { data, error, isLoading } = useGetAllUsersQuery(undefined);
+  const { data, error, isLoading } = useGetOrdersByUserQuery(undefined);
 
   const orders = data?.data || [];
   console.log(orders);

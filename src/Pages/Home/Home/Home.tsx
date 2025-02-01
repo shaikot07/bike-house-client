@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Banner from '../Banner/Banner';
 import SecondSectionCart from '../secondSectionCart/SecondSectionCart';
 import TopBrand from '../topBrand/TopBrand';

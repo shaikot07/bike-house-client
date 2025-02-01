@@ -1,4 +1,4 @@
-import React from "react";
+
 import cImg1 from "../../../assets/c-1.webp";
 import cImg2 from "../../../assets/c-2.webp";
 import cImg3 from "../../../assets/c-3.webp";

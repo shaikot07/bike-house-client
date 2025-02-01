@@ -12,7 +12,7 @@ const AdminPrivateRoute = ({ children }: { children: React.ReactNode }) => {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
 
-    // If the user is not an admin, redirect them to another page (e.g., user dashboard or unauthorized page)
+    // If the user is not an admin, redirect 
     if (user.role !== "admin") {
         return <Navigate to="/unauthorized" replace />;
     }
