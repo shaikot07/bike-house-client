@@ -157,21 +157,21 @@ const AllProductPage = () => {
             }) => (
               <div
                 key={_id}
-                className="relative mt-2 flex flex-col w-full max-w-[280px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
+                className="relative mt-2 flex flex-col w-full max-w-[300px] overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
               >
-                <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
+                <div className="relative mx-3 mt-3  flex h-60 overflow-hidden rounded-xl">
                   <img
-                    className="object-cover w-full h-full"
+                    className="w-full h-full"
                     src={productImg}
                     alt={name}
                   />
                 </div>
                 <div className="mt-4 px-5 pb-5 flex flex-col justify-between flex-grow">
-                  <a href="#">
+                 
                     <h5 className="text-lg font-bold tracking-tight text-[#1A1D21]">
                       {name} <span>{model}</span>
                     </h5>
-                  </a>
+               
                   <p className="text-[#1A1D21] pt-2 text-sm font-bold line-clamp-2">
                     {description}
                   </p>

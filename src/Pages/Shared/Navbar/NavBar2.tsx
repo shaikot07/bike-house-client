@@ -49,7 +49,7 @@ const NavBar2 = () => {
           <li>
             <Link
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
-              to={"/product"}
+              to={"/products"}
             >
               All Product
             </Link>
@@ -69,7 +69,7 @@ const NavBar2 = () => {
           <li>
             <Link
               className="rounded-none text-black font-bold hover:!text-[#F2355F] hover:border-[#F2355F] hover:border-b-2 transition duration-300 focus:!text-[#F2355F]"
-              to={"/product"}
+              to={"/products"}
             >
               All Product
             </Link>
@@ -88,8 +88,8 @@ const NavBar2 = () => {
   );
 
   return (
-    <div className="bg-white">
-      <div className="navbar bg-white text-black border-b border-slate-700 sticky top-0 max-w-6xl mx-auto z-40 justify-between ">
+  
+      <div className="navbar bg-white text-black  sticky top-0 max-w-6xl mx-auto z-40 justify-between ">
         <div className="navbar-start ">
           {/* Hamburger Menu (only visible on small screens) */}
           <button
@@ -184,7 +184,7 @@ const NavBar2 = () => {
           )}
         </div>
       </div>
-    </div>
+
   );
 };
 

@@ -18,7 +18,7 @@ const Banner = () => {
 
     {/* Content Section */}
     <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-[450px] lg:items-center lg:px-8">
-      <div className="max-w-3xl text-center sm:text-left lg:ml-[35px] sm:text-left rtl:sm:text-right">
+      <div className="max-w-3xl text-center  lg:ml-[35px] sm:text-left rtl:sm:text-right">
         <h1 className="text-base font-extrabold text-white sm:text-5xl">
           Ride the Revolution Your biking destination.
           <strong className="block font-extrabold text-white "> </strong>
