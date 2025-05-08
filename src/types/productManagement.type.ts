@@ -1,13 +1,46 @@
+// import { TMeta } from "./global";
+
+import { TMeta } from "./global";
+
+// export type TProduct = {
+//     _id: string
+//     name: string
+//     brand: string
+//     model: string
+//     price: number
+//     productImg: string
+//     description: string
+//     quantity: number
+//     inStock: boolean
+//     category: string
+//     data: {
+//       data: TProduct[];
+//       meta: TMeta;
+//     };
+//   };
+
 
 export type TProduct = {
-    _id: string
-    name: string
-    brand: string
-    model: string
-    price: number
-    productImg: string
-    description: string
-    quantity: number
-    inStock: boolean
-    category: string
+  _id: string;
+  name: string;
+  brand: string;
+  model: string;
+  price: number;
+  productImg: string;
+  description: string;
+  quantity: number;
+  inStock: boolean;
+  category: string;
+};
+
+// Wrapper type for paginated responses
+export type TProductResponse = {
+  data: {
+    data: TProduct[];
+    meta: {
+      totalPage: number;
+      limit: number;
+      page: number;
+    };
   };
+};

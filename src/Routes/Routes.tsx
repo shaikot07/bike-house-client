@@ -26,6 +26,7 @@ import Unauthorized from "../Pages/Shared/ErrorPage/Unauthorized";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 
 
+
 export const router = createBrowserRouter([
     {
       path: "/",
@@ -73,6 +74,7 @@ export const router = createBrowserRouter([
     },
     {
           path:'dashboard',
+       
           element:<Dashboard></Dashboard>,
       //     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           

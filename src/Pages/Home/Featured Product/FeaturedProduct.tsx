@@ -1,11 +1,13 @@
 
 import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
+import { TProduct } from "../../../types/productManagement.type";
 
 const FeaturedProduct = () => {
   const navigate = useNavigate();
   const { isLoading, data } = useGetAllProductsQuery({});
-  const products = data?.data?.slice(0, 4) || [];
+  const products: TProduct[] = data?.data?.data?.slice(0, 4) || [];
+  console.log(products, "featured products");
 
   const handleClick = () => {
     navigate("/product");
@@ -14,7 +16,7 @@ const FeaturedProduct = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <div className="max-w-6xl mx-auto mt-10 mb-6 ">
-      <h1 className="text-3xl font-extrabold pt-6 ">New Bikes</h1>
+      <h1 className="text-3xl font-extrabold pt-6 text-black ">New Bikes</h1>
       <div className="grid grid-cols-1 mt-6 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
         {products.map(
           ({ _id, productImg, name, description, price, model, category }) => (
@@ -30,7 +32,7 @@ const FeaturedProduct = () => {
 
               <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                 <img
-                  className="object-cover w-full h-full"
+                  className=" w-full h-full"
                   src={productImg}
                   alt={name}
                 />

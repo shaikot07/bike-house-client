@@ -10,6 +10,12 @@ const userManagementApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getOrderChartData: builder.query({
+      query: () => ({
+        url: "orders/order-history",
+        method: "GET",
+      }),
+    }),
 
     // blockUser: builder.mutation({
     //   query: ({userId }) => ({
@@ -29,5 +35,6 @@ const userManagementApi = baseApi.injectEndpoints({
 });
 
 export const {
-useGetRevenueDataQuery
+useGetRevenueDataQuery,
+useGetOrderChartDataQuery
 } = userManagementApi;

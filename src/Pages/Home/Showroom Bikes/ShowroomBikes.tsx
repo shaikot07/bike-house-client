@@ -1,11 +1,12 @@
 
 import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
+import { TProduct } from "../../../types/productManagement.type";
 
 const ShowroomBikes = () => {
   const navigate = useNavigate();
   const { isLoading, data } = useGetAllProductsQuery({});
-  const products = data?.data?.slice(6, 10) || [];
+  const products: TProduct[] = data?.data?.data?.slice(0, 4) || [];
 
   const handleClick = () => {
     navigate("/product");
@@ -14,7 +15,7 @@ const ShowroomBikes = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <div className="max-w-6xl mx-auto mt-10 mb-6">
-      <h1 className="text-3xl pt-6 font-extrabold ">Showroom Bikes</h1>
+      <h1 className="text-3xl pt-6 font-extrabold text-black ">Showroom Bikes</h1>
       <div className="grid grid-cols-1 mt-6 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-items-center">
         {products.map(
           ({ _id, productImg, name, description, price, model, category }) => (

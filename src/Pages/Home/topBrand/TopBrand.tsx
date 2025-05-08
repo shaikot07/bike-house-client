@@ -9,7 +9,7 @@ import b6 from "../../../assets/b-6.webp";
 const TopBrand = () => {
   return (
     <div className="max-w-6xl mx-auto  mt-10 mb-8">
-      <h2 className="text-3xl pt-5 font-extrabold pb-8">Top Brands</h2>
+      <h2 className="text-3xl pt-5 font-extrabold pb-8 text-black">Top Brands</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 ">
         {/* Card 1 */}
         <div className="relative isolate flex flex-col justify-end overflow-hidden rounded-xl px-6 pb-2 pt-6 transition-transform duration-300 hover:-translate-y-2 hover:cursor-pointer">
