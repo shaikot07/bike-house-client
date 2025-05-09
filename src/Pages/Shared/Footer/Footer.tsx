@@ -49,7 +49,7 @@ const Footer = () => {
                   <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/whyUs"
                     >
                     Why us
                     </a>
@@ -57,25 +57,18 @@ const Footer = () => {
                   <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/contact"
                     >
                      Work with us
                     </a>
                   </li>
+                 
                   <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/aboutUs"
                     >
-                      Pro ambassadors
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
-                    >
-                     Terms of Service
+                    About Us
                     </a>
                   </li>
                 </ul>
@@ -88,31 +81,31 @@ const Footer = () => {
                   <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/aboutUs"
                     >
                      information
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
                       href="#"
                     >
                       Terms &amp; Conditions
                     </a>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/contact"
                     >
                       Privacy Policy
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a
                       className="text-blueGray-600 hover:text-[#F2355F] font-semibold block pb-2 text-sm"
-                      href="#"
+                      href="/contact"
                     >
                       Contact Us
                     </a>
@@ -133,7 +126,7 @@ const Footer = () => {
                href="#"
                 className="text-blueGray-500 hover:text-[#F2355F]"
               >
-                Creative Tim
+                {" "} All rights reserved.
               </a>
               .
             </div>

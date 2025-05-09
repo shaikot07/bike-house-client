@@ -8,6 +8,7 @@ export type TUser = {
   name: string;
   iat: number;
   exp: number;
+  profileImg: string;
 };
 
 type TAuthState = {

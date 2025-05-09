@@ -3,17 +3,26 @@ import { useParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../redux/features/admin/productManagement.api";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { TProduct } from "../../../types/productManagement.type";
+import ProductFeature from "./ProductFeature";
+import { useDispatch, } from "react-redux";
+
+import { addToCart } from "../../../redux/features/Cart/cartSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data, isFetching } = useGetAllProductsQuery(undefined);
-
-  const products = data?.data || [];
+  const { data, isFetching } = useGetAllProductsQuery({});
+  const products: TProduct[] = data?.data?.data || [];
+  console.log(products, "products from detailes page");
   const product = products.find((item) => item._id === id);
 
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product ? product.price : 0);
   const navigate = useNavigate();
+  // this is add to cart  redux 
+          const dispatch = useDispatch();
+  // const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+
 
   useEffect(() => {
     if (product) {
@@ -59,13 +68,18 @@ const ProductDetails = () => {
     console.log("Order Details:", orderDetails);
     navigate("/checkout", { state: orderDetails });
   };
+  // ----------add to cart--------- 
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    toast.success('Added successfully!');
+  };
 
   if (isFetching) return <p>Loading...</p>;
   if (!product) return <p>Product not found!</p>;
 
   return (
-    <div>
-      <div className="font-[sans-serif] p-4 bg-gray-100">
+    <div className="= mt-8 mb-8">
+      <div className="font-[sans-serif] p-4 bg-gray-100 ">
         <div className="lg:max-w-6xl max-w-xl mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-2 gap-8 max-lg:gap-12 max-sm:gap-8">
             <div className="w-full lg:sticky top-0">
@@ -74,7 +88,7 @@ const ProductDetails = () => {
                   <img
                     src={product?.productImg}
                     alt="Product"
-                    className="w-full  aspect-[11/8] object-cover object-top"
+                    className="w-full  aspect-[11/8]  "
                   />
                 </div>
                 {/*  */}
@@ -173,18 +187,21 @@ const ProductDetails = () => {
                   </h4>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-4">
-                  {/* <button
-                    type="button"
-                    className="px-4 py-3 w-[45%] border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-semibold"
-                  >
-                    Add to cart
-                  </button> */}
+                 
+                  {/* <AddToCart></AddToCart> */}
                   <button
                     type="button"
                     onClick={handleBuyNow}
-                    className="px-4  py-3 w-full mt-2 border bg-[#F2355F] hover:bg-black text-white text-sm font-semibold round rounded-md"
+                    className="px-4  py-3 w-[45%] mt-2 border bg-[#F2355F] hover:bg-black text-white text-sm font-semibold round rounded-md"
                   >
                     Buy it now
+                  </button>
+                   <button
+                  onClick={handleAddToCart}
+                    type="button"
+                    className="px-4  py-3 w-[45%] mt-2 border  hover:bg-black text-black hover:text-white text-sm font-semibold round rounded-md"
+                  >
+                    Add to cart
                   </button>
                 </div>
               </div>
@@ -261,6 +278,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <ProductFeature/>
     </div>
   );
 };

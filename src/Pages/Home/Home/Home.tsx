@@ -6,7 +6,8 @@ import FeaturedProduct from '../Featured Product/FeaturedProduct';
 import ShowroomBikes from '../Showroom Bikes/ShowroomBikes';
 import ServicesSection from '../servicesSection/ServicesSection';
 import Testimonials from '../testimoniyal/Testimonials';
-import Footer from '../../Shared/Footer/Footer';
+
+import WhyUs from '../../ExtraPage/WhyUs';
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
            <TopBrand/>
            <ShowroomBikes/>
            <ServicesSection/>
+           <WhyUs/>
            <Testimonials/>
            {/* <Footer/> */}
         </div>

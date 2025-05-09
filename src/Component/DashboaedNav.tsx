@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logout, selectCurrentUser } from "../redux/features/auth/authSlice";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { FaSignOutAlt, FaTasks } from "react-icons/fa";
 
 const DashboaedNav = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // For mobile menu toggle
+  // const [isMenuOpen, setIsMenuOpen] = useState(false); // For mobile menu toggle
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
 

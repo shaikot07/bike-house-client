@@ -1,4 +1,3 @@
-
 import { baseApi } from "../../api/baseApi";
 
 const userEndManagementApi = baseApi.injectEndpoints({
@@ -6,6 +5,12 @@ const userEndManagementApi = baseApi.injectEndpoints({
     getUserAllOrder: builder.query({
       query: () => ({
         url: "orders/get-user-order",
+        method: "GET",
+      }),
+    }),
+    getUserOrderChartData: builder.query({
+      query: (email: string) => ({
+        url: `orders/chart/${email}`,
         method: "GET",
       }),
     }),
@@ -27,6 +32,4 @@ const userEndManagementApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {
-useGetUserAllOrderQuery
-} = userEndManagementApi;
+export const { useGetUserAllOrderQuery,useGetUserOrderChartDataQuery } = userEndManagementApi;

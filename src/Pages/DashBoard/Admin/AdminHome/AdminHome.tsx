@@ -6,6 +6,7 @@ import {
 } from "../../../../redux/features/admin/order/orderManagement.api";
 import { useGetAllProductsQuery } from "../../../../redux/features/admin/productManagement.api";
 import { useGetAllUsersQuery } from "../../../../redux/features/admin/userManagement.api";
+import { TProduct } from "../../../../types/productManagement.type";
 
 const AdminHome = () => {
   const { data } = useGetRevenueDataQuery(undefined);
@@ -15,15 +16,20 @@ const AdminHome = () => {
   const chartData = chartDataResponse?.data?.totalRevenue || [];
   // console.log(chartDataResponse ,"chart data");
   // for product
-  const { data: productsData, isLoading } = useGetAllProductsQuery(undefined, {
-    refetchOnMountOrArgChange: true,
-  });
-  const products = productsData?.data || [];
+  const { data: productsData, isLoading } = useGetAllProductsQuery(
+    {},
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
+  // const products = productsData?.data || [];
+  const products = productsData || { data: [] };
   console.log(products);
   // for user
-  const { data: usersData, error } = useGetAllUsersQuery(undefined);
+  const { data: usersData } = useGetAllUsersQuery(undefined);
   const users = usersData?.data || [];
   console.log(users);
+
   if (isLoading) {
     console.log("Loading...");
   }
@@ -86,7 +92,10 @@ const AdminHome = () => {
           </div>
           <div className="text-center">
             <p className="text-xs text-gray-500">Total Product</p>
-            <p className="text-xl font-semibold">{products?.length}</p>
+            {/* <p className="text-xl font-semibold">{products?.data?.length || 0}</p> */}
+            <p className="text-xl font-semibold">
+              {(products as { data: TProduct[] }).data.length}
+            </p>
           </div>
         </div>
       </div>

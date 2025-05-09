@@ -37,7 +37,7 @@ const productManagementApi = baseApi.injectEndpoints({
       },
       transformResponse: (response: TResponseRedux<TProduct[]>): any => ({
         data: response.data,
-        meta: response.meta!,
+        meta: response.data?.meta,
       }),
     }),
     addProduct: builder.mutation({

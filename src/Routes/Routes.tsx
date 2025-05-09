@@ -24,6 +24,9 @@ import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 import Unauthorized from "../Pages/Shared/ErrorPage/Unauthorized";
 import AdminPrivateRoute from "./AdminPrivateRoute";
+import WhyUs from "../Pages/ExtraPage/WhyUs";
+import Contact from "../Pages/ExtraPage/Contact";
+import AddToCart from "../Pages/addToCart/AddToCart";
 
 
 
@@ -42,7 +45,7 @@ export const router = createBrowserRouter([
                 element:<AllProductPage/>
           },
           {
-                path:'/product/:id',
+                path:'/products/:id',
                 element:<ProductDetails/>
           },
           {
@@ -56,6 +59,21 @@ export const router = createBrowserRouter([
           {
                 path:'/aboutUs',
                 element:<PrivateRoute><AboutUs/></PrivateRoute>
+                
+          },
+          {
+                path:'/whyUs',
+                element:<PrivateRoute><WhyUs/></PrivateRoute>
+                
+          },
+          {
+                path:'/contact',
+                element:<PrivateRoute><Contact/></PrivateRoute>
+                
+          },
+          {
+                path:'/addToCart',
+                element:<PrivateRoute><AddToCart/></PrivateRoute>
                 
           },
           {

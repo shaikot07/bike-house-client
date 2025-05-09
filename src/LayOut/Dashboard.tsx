@@ -83,15 +83,17 @@ import { useEffect, useState } from 'react';
 import { FaAddressBook, FaBookReader, FaHome, FaUsers, FaBars, FaSignOutAlt } from 'react-icons/fa';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { MdPublish } from "react-icons/md";
-import { selectCurrentUser } from '../redux/features/auth/authSlice';
+import { logout, selectCurrentUser } from '../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
 import { FaBagShopping } from 'react-icons/fa6';
 import DashboaedNav from '../Component/DashboaedNav';
+import { useAppDispatch } from '../redux/hooks';
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const user = useSelector(selectCurrentUser);
+      const dispatch = useAppDispatch();
     const isAdmin = user?.role === 'admin';
 
     useEffect(() => {
@@ -101,7 +103,9 @@ const Dashboard = () => {
             navigate('/dashboard/userHome');
         }
     }, [isAdmin, navigate]);
-
+  const handleSignoutFunc = () => {
+    dispatch(logout());
+  };
     return (
         <div className='flex h-screen'>
             {/* Sidebar */}
@@ -137,7 +141,9 @@ const Dashboard = () => {
                 {/* Fixed Logout Button at Absolute Bottom */}
                 <div className='mt-auto p-4 border-t border-white/20'>
                     <button className='w-full font-bold hover:text-black focus:!text-black'>
-                    <FaSignOutAlt className='inline mr-2'/> 
+                    <FaSignOutAlt className='inline mr-2'
+                    onClick={handleSignoutFunc}
+                    /> 
                         Logout
                     </button>
                 </div>

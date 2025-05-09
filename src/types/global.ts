@@ -17,9 +17,11 @@ export type TMeta = {
 };
 
 export type TResponse<T> = {
-  data?: T;
+  data?: {
+    data: T;      // <--- matches the inner "data" containing your actual payload (e.g., TProduct[])
+    meta?: TMeta;
+  };
   error?: TError;
-  meta?: TMeta;
   success: boolean;
   message: string;
 };

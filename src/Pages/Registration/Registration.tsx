@@ -127,7 +127,7 @@ const Registration = () => {
             </div>
           </form>
           <div className="sm:mx-auto sm:w-full sm:max-w-md mt-2">
-            <p className="text-center">
+            <p className="text-center text-black">
               Already have an account?{" "}
               <span>
                 <a

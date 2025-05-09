@@ -6,11 +6,11 @@ import { TProduct } from "../../../types/productManagement.type";
 const FeaturedProduct = () => {
   const navigate = useNavigate();
   const { isLoading, data } = useGetAllProductsQuery({});
-  const products: TProduct[] = data?.data?.data?.slice(0, 4) || [];
+  const products: TProduct[] = data?.data?.data?.slice(5, 9) || [];
   console.log(products, "featured products");
 
   const handleClick = () => {
-    navigate("/product");
+    navigate("/products");
   };
 
   if (isLoading) return <p>Loading...</p>;

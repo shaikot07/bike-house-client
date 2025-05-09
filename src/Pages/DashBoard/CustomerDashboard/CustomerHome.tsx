@@ -1,18 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { OrderChart } from "../../../Component/Chart/OrderChart";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 import { useGetOrdersByUserQuery } from "../../../redux/features/order/order";
+import { useGetUserOrderChartDataQuery } from "../../../redux/features/user-customer/UserEndManagement.api";
+import { useAppSelector } from "../../../redux/hooks";
 
 const CustomerHome = () => {
   const { data, error, isLoading } = useGetOrdersByUserQuery(undefined);
 
   const orders = data?.data || [];
   console.log(orders);
-
+// fir chart order chart data 
+  const user = useAppSelector(selectCurrentUser);
+const { data: chartDataResponse } = useGetUserOrderChartDataQuery( user?.email || '');
+  const chartData = chartDataResponse?.data || [];
+  console.log(chartData , "chartDataResponse chartDataResponse  customer");
   return (
     <div>
-      
+      {/* here chart  */}
+      {chartData.length > 0 ? (
+                <OrderChart rawData={chartData} />
+              ) : (
+                <p>Loading chart data...</p>
+              )}
       <div>
-        <h1 className="text-3xl p-4 text-center">Order History</h1>
+       <div className="mt-14"> <h1 className="text-3xl p-4 text-center">Order History</h1></div>
 
         <div className="text-gray-900 bg-gray-200 px-3 py-4 flex justify-center">
           {isLoading ? (

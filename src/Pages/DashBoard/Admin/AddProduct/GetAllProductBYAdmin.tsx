@@ -38,7 +38,7 @@ const GetAllProductBYAdmin = () => {
     // limit,
   },{ refetchOnMountOrArgChange: true });
  const [deleteProduct]=useDeleteProductMutation()
-  const products = data?.data || [];
+  const products = data?.data?.data || [];
   console.log(products);
 
   if (isFetching)

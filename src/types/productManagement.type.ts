@@ -1,6 +1,5 @@
 // import { TMeta } from "./global";
 
-import { TMeta } from "./global";
 
 // export type TProduct = {
 //     _id: string
@@ -33,7 +32,6 @@ export type TProduct = {
   category: string;
 };
 
-// Wrapper type for paginated responses
 export type TProductResponse = {
   data: {
     data: TProduct[];
@@ -43,4 +41,7 @@ export type TProductResponse = {
       page: number;
     };
   };
+  success: boolean;
+  message: string;
+  statusCode: number;
 };

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+// ------------------------------------------
 
 import { FieldValues, useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,43 +15,52 @@ const Login = () => {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
+
   const {
     register,
     handleSubmit,
+    setValue, // for setting field values
+    trigger,  // for validating
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log("Form Data:", data);
     const toastId = toast.loading("Logging in...");
-  
+
     try {
       const userInfo = {
         email: data.email,
         password: data.password,
       };
-      console.log("User Info:", userInfo);
-  
+
       const res = await login(userInfo).unwrap();
-      // console.log("API Response:", res);
-  
+
       if (res.success) {
         const user = verifyToken(res.data.token) as TUser;
-        // console.log("Decoded User:", user);
-  
         dispatch(setUser({ user: user, token: res.data.token }));
         toast.success(`${res.message}`, { id: toastId, duration: 2000 });
-  
-        // Navigate to the homepage
+
         navigate(location.state?.from?.pathname || "/", { replace: true });
       } else {
         throw new Error(res.message || "Login failed");
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      console.error("Error during login:", err);
-      toast.error(err.data.message  || "Something went wrong", { id: toastId, duration: 2000 });
+      toast.error(err.data?.message || "Something went wrong", {
+        id: toastId,
+        duration: 2000,
+      });
     }
+  };
+
+  // Dummy credentials
+  const adminCredentials = { email: "admin@gmail.com", password: "123456" };
+  const userCredentials = { email: "test2@gmail.com", password: "123456" };
+
+  const handleQuickLogin = async (credentials: { email: string; password: string }) => {
+    setValue("email", credentials.email);
+    setValue("password", credentials.password);
+    await trigger(); // validate before submit
+    handleSubmit(onSubmit)();
   };
 
   return (
@@ -62,13 +74,27 @@ const Login = () => {
             <p className="text-center text-sm">
               If you have an account with us, please log in.
             </p>
+
+            {/* 🔐 Quick Login Buttons */}
+            <div className="flex justify-center gap-4 mt-4">
+              <button
+                onClick={() => handleQuickLogin(adminCredentials)}
+                className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 text-sm"
+              >
+                Login as Admin
+              </button>
+              <button
+                onClick={() => handleQuickLogin(userCredentials)}
+                className="px-3 py-1 bg-black text-white rounded hover:bg-green-700 text-sm"
+              >
+                Login as User
+              </button>
+            </div>
           </div>
+
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
               </label>
               <div className="mt-1">
@@ -81,17 +107,14 @@ const Login = () => {
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">
-                    {errors?.email?.message?.toString()}
+                    {errors.email.message?.toString()}
                   </p>
                 )}
               </div>
             </div>
 
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="mt-1">
@@ -121,21 +144,20 @@ const Login = () => {
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#F2355F] hover:bg-[#f2355ef1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-               Login
+                Login
               </button>
             </div>
           </form>
+
           <div className="sm:mx-auto sm:w-full sm:max-w-md mt-2">
-            <p className="text-center text-sm">
+            <p className="text-center text-sm text-black">
               Don’t have an account?{" "}
-              <span>
-                <a
-                  href="/registration"
-                  className="font-medium text-[#F2355F] hover:text-blue-500"
-                >
-                  create an account
-                </a>
-              </span>
+              <a
+                href="/registration"
+                className="font-medium text-[#F2355F] hover:text-blue-500"
+              >
+                create an account
+              </a>
             </p>
           </div>
         </div>

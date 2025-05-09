@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     BarChart,
     Bar,
@@ -32,7 +33,7 @@ import {
     return Object.values(grouped);
   };
   
-  export const OrderChart = ({ rawData }) => {
+  export const OrderChart = ({ rawData }: { rawData: DataItem[] }) => {
     const chartData = useMemo(() => transformChartData(rawData), [rawData]);
   
     return (

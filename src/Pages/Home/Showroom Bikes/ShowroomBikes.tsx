@@ -6,10 +6,11 @@ import { TProduct } from "../../../types/productManagement.type";
 const ShowroomBikes = () => {
   const navigate = useNavigate();
   const { isLoading, data } = useGetAllProductsQuery({});
-  const products: TProduct[] = data?.data?.data?.slice(0, 4) || [];
+  const products: TProduct[] = data?.data?.data?.slice(3, 7) || [];
 
   const handleClick = () => {
-    navigate("/product");
+    navigate("/products");
+    
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -31,7 +32,7 @@ const ShowroomBikes = () => {
 
               <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                 <img
-                  className="object-cover w-full h-full"
+                  className=" w-full h-full"
                   src={productImg}
                   alt={name}
                 />
