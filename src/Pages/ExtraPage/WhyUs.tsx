@@ -3,7 +3,7 @@
 const WhyUs = () => {
   return (
     <div>
-      <section className="bg-gray-50 py-12">
+      <section className="bg-gray-50 py-12 text-black">
         <div className="container max-w-6xl mx-auto px-6 lg:px-8">
           <h2 className="text-2xl font-semibold text-center sm:text-4xl mb-6">
             Why Choose Bike House?

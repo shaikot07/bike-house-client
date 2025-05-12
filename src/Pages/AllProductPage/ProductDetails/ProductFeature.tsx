@@ -4,7 +4,7 @@ const ProductFeature = () => {
   return (
     <div>
       <section>
-        <div className="container max-w-xl p-6 mx-auto space-y-12 lg:px-8 lg:max-w-7xl mt-16">
+        <div className="container max-w-xl p-6 mx-auto space-y-12 lg:px-8 lg:max-w-7xl mt-16 text-black">
           <div>
             <h2 className="text-2xl font-semibold text-center sm:text-5xl">
               What’s New at Bike House
