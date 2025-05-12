@@ -10,7 +10,7 @@ const AdminOrderDetailes = () => {
     return (
         <div>
       
-      <div>
+      <div className='text-black'>
         <h1 className="text-3xl p-4 text-center"> admin Order History</h1>
 
         <div className="text-gray-900 bg-gray-200 px-3 py-4 flex justify-center">
@@ -32,7 +32,7 @@ const AdminOrderDetailes = () => {
                 {orders.map((order: any) => (
                   <tr
                     key={order._id}
-                    className="border-b hover:bg-orange-100 bg-gray-100"
+                    className="border-b hover:bg-[#F2355F] bg-gray-100"
                   >
                     {/* <td className="p-3 px-5">{order.name}</td> */}
                     <td className="p-3 px-5">{order?.email}</td>

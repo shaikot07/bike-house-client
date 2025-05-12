@@ -25,7 +25,7 @@ const { data: chartDataResponse } = useGetUserOrderChartDataQuery( user?.email |
                 <p>Loading chart data...</p>
               )}
       <div>
-       <div className="mt-14"> <h1 className="text-3xl p-4 text-center">Order History</h1></div>
+       <div className="mt-14"> <h1 className="text-3xl p-4 text-center text-black">Order History</h1></div>
 
         <div className="text-gray-900 bg-gray-200 px-3 py-4 flex justify-center">
           {isLoading ? (
@@ -35,7 +35,7 @@ const { data: chartDataResponse } = useGetUserOrderChartDataQuery( user?.email |
           ) :orders && orders.length > 0 ? (
             <table className="w-full text-md bg-white shadow-md rounded mb-4">
               <thead>
-                <tr className="border-b bg-gray-300">
+                <tr className="border-b bg-gray-300 text-black">
                   <th className="text-left p-3 px-5">Name</th>
                   <th className="text-left p-3 px-5">status</th>
                   <th className="text-left p-3 px-5">Total Price</th>
@@ -46,7 +46,7 @@ const { data: chartDataResponse } = useGetUserOrderChartDataQuery( user?.email |
                 {orders.map((order: any) => (
                   <tr
                     key={order._id}
-                    className="border-b hover:bg-orange-100 bg-gray-100"
+                    className="border-b hover:bg-[#F2355F] bg-gray-100"
                   >
                     {/* <td className="p-3 px-5">{order.name}</td> */}
                     <td className="p-3 px-5">{order?.email}</td>

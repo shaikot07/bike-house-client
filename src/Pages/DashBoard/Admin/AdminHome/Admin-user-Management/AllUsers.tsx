@@ -128,10 +128,10 @@ const AllUsers = () => {
 
   return (
     <div>
-      <h1 className="text-3xl p-4 text-center">All User Management</h1>
+      <h1 className="text-3xl p-4 text-center text-black">All User Management</h1>
 
       {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 my-4">
+      <div className="flex justify-center gap-4 my-4 text-black">
         {["all", "new", "old"].map((type) => (
           <button
             key={type}

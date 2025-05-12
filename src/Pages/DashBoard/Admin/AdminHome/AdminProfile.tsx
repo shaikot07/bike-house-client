@@ -55,7 +55,7 @@ const CustomerProfile = () => {
   
   return (
     <div>
-      <main className="profile-page">
+      <main className="profile-page my-10">
         <section className="relative block h-[500px]">
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
@@ -96,7 +96,7 @@ const CustomerProfile = () => {
                       <div className="py-6 mt-32 sm:mt-0 text-center">
                         <button
                           onClick={() => setOpen(true)}
-                          className="bg-[#FF6725] text-white hover:bg-black rounded-full px-4 py-2 text-sm font-semibold shadow-md flex items-center gap-2"
+                          className="bg-[#F2355F] text-white hover:bg-black rounded-full px-4 py-2 text-sm font-semibold shadow-md flex items-center gap-2"
                         >
                           <FaPencil size={16} />
                           Edit Profile
@@ -107,7 +107,7 @@ const CustomerProfile = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                  <h3 className="text-4xl font-semibold text-[#FF6725] mb-2">
+                  <h3 className="text-4xl font-semibold text-[#F2355F] mb-2">
                     Name: {updatedUser?.name || "N/A"}
                   </h3>
                   <p className="text-sm text-blueGray-400 font-bold uppercase">

@@ -109,30 +109,30 @@ const Dashboard = () => {
     return (
         <div className='flex h-screen'>
             {/* Sidebar */}
-            <div className={`absolute md:relative flex flex-col z-10 w-1/6 h-screen bg-[#F2355F] text-white transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+            <div className={`absolute md:relative flex flex-col z-10 w-1/6 h-screen bg-white border-2 shadow-2xl text-Black transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
                 <button className='md:hidden p-4' onClick={() => setIsSidebarOpen(false)}>
                     ✖
                 </button>
                 
                 {/* Scrollable Menu Items */}
-                <div className='flex-1 overflow-y-auto ml-6'>
+                <div className='flex-1 overflow-y-auto ml-6 text-black'>
                     <div className='mt-10 text-2xl font-semibold '><h1>Well come to Back!!</h1></div>
                     <ul className='menu p-4 space-y-5'>
                         {isAdmin ? (
                             <>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/adminHome"><FaHome /> Admin Home</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/allUser"><FaUsers /> All Users</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/getAllProductByAdmin"><FaBookReader /> All Products</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/addProduct"><MdPublish /> Add Product</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/adminProfile"><FaAddressBook /> Admin Profile</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/adminOrderDeltas"><FaBagShopping /> Order Deltas</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/"><FaHome /> Home</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/adminHome"><FaHome /> Admin Home</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/allUser"><FaUsers /> All Users</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/getAllProductByAdmin"><FaBookReader /> All Products</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/addProduct"><MdPublish /> Add Product</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/adminProfile"><FaAddressBook /> Admin Profile</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/adminOrderDeltas"><FaBagShopping /> Order Deltas</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/"><FaHome /> Home</NavLink></li>
                             </>
                         ) : (
                             <>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/userHome"><FaHome /> User Home</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/dashboard/profile"><FaAddressBook /> My Profile</NavLink></li>
-                                <li className='font-bold hover:text-black focus:!text-black'><NavLink to="/"><FaHome /> Home</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/userHome"><FaHome /> User Home</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/dashboard/profile"><FaAddressBook /> My Profile</NavLink></li>
+                                <li className='font-bold hover:text-[#F2355F] focus:!text-[#F2355F]'><NavLink to="/"><FaHome /> Home</NavLink></li>
                             </>
                         )}
                     </ul>
@@ -140,7 +140,7 @@ const Dashboard = () => {
 
                 {/* Fixed Logout Button at Absolute Bottom */}
                 <div className='mt-auto p-4 border-t border-white/20'>
-                    <button className='w-full font-bold hover:text-black focus:!text-black'>
+                    <button className='w-full font-bold text-black hover:text-[#F2355F] focus:!text-[#F2355F]'>
                     <FaSignOutAlt className='inline mr-2'
                     onClick={handleSignoutFunc}
                     /> 
@@ -155,7 +155,7 @@ const Dashboard = () => {
                     <button className='md:hidden p-2' onClick={() => setIsSidebarOpen(true)}>
                         <FaBars size={24} />
                     </button>
-                    <div className='bg-amber-700'>
+                    <div className='bg-amber-300'>
                         <DashboaedNav></DashboaedNav>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ const AdminHome = () => {
     <div>
       <div className="bg-white rounded-2xl mb-10 shadow-md px-12 py-6 flex justify-between items-center gap-16">
         {/* <!-- All Properties --> */}
-        <div className="text-center">
+        <div className="text-center text-black">
           <p className="text-xs text-gray-500">All Users</p>
           <p className="text-2xl font-semibold">{users?.length} +</p>
         </div>
@@ -63,8 +63,8 @@ const AdminHome = () => {
               />
             </svg>
           </div>
-          <div className="text-center">
-            <p className="text-xs text-gray-500">Total Revenue</p>
+          <div className="text-center text-black">
+            <p className="text-xs text-black">Total Revenue</p>
             <p className="text-xl font-semibold">$ {revenue?.totalRevenue}</p>
           </div>
         </div>
@@ -90,7 +90,7 @@ const AdminHome = () => {
               />
             </svg>
           </div>
-          <div className="text-center">
+          <div className="text-center text-black">
             <p className="text-xs text-gray-500">Total Product</p>
             {/* <p className="text-xl font-semibold">{products?.data?.length || 0}</p> */}
             <p className="text-xl font-semibold">

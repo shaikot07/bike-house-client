@@ -58,7 +58,7 @@ const onSubmit = async (data: any) => {
 
   return (
     <div>
-      <h2 className="text-4xl font-medium text-center mb-3">
+      <h2 className="text-4xl font-medium text-center mb-3 text-black">
         Add the new product
       </h2>
       <form onSubmit={handleSubmit(onSubmit)} className="">

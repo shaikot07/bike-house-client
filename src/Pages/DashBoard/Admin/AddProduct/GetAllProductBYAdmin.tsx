@@ -75,7 +75,7 @@ const handleDeleteClick = async (id:any) => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto pt-6">
+    <div className="max-w-6xl mx-auto pt-6 text-black">
       {/* <TestSearchComponent></TestSearchComponent> */}
       <div className="">
         <h1 className="text-2xl font-bold mb-4">All Products</h1>
@@ -87,7 +87,7 @@ const handleDeleteClick = async (id:any) => {
               <select
                 value={filterCategory}
                 onChange={(e) => handleFilterChange(e.target.value)}
-                className="w-full sm:w-48 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1"
+                className="w-full sm:w-48 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 border-[#080808] text-black"
               >
                 <option value="all">All Categories</option>
                 <option value="Mountain">Mountain</option>
@@ -103,7 +103,7 @@ const handleDeleteClick = async (id:any) => {
               <select
                 value={sortOption}
                 onChange={(e) => handleSortChange(e.target.value)}
-                className="w-full sm:w-48 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1"
+                className="w-full sm:w-48 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 border-[#080808] text-black"
               >
                 <option value="asc">sort by price</option>
                 <option value="asc">Price: Low to High</option>
@@ -128,7 +128,7 @@ const handleDeleteClick = async (id:any) => {
                 id="search-dropdown"
                 value={searchTerm || ""}
                 onChange={(e) => setSearchTerm(e.target.value)} // update searchTer input change
-                className="w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-sm border-s-gray-50 border-s-2 border border-gray-300"
+                className="w-full p-2.5 text-sm text-gray-900 bg-gray-50 border-[#080808] rounded-sm border-s-gray-50 border-s-2 border "
                 placeholder="Search Product by Name, Model, Brand'..."
                 required
               />

@@ -46,8 +46,8 @@ import {
           <Tooltip />
           <Legend />
           <Bar dataKey="Paid_orders" stackId="a" fill="#009432" name="Paid Orders" />
-          <Bar dataKey="Pending_orders" stackId="a" fill="#ffc658" name="Pending Orders" />
-          <Bar dataKey="Cancelled_orders" stackId="a" fill="#ff7f7f" name="Cancelled Orders" />
+          <Bar dataKey="Pending_orders" stackId="a" fill="#F2355F" name="Pending Orders" />
+          <Bar dataKey="Cancelled_orders" stackId="a" fill="#FF7400" name="Cancelled Orders" /> 
         </BarChart>
       </ResponsiveContainer>
     </div>
